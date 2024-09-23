@@ -1,0 +1,7 @@
+[build]
+  publish = "out" # This is the default output directory for static exports
+  command = "npm run build"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
