@@ -1,0 +1,20 @@
+{
+    "monthlyBill": {
+      "object (Money)"
+    },
+    "defaultBill": "boolean",
+    "averageKwhPerMonth": "number",
+    "financialDetails": {
+      "object (FinancialDetails)"
+    },
+    "leasingSavings": {
+      "object (LeasingSavings)"
+    },
+    "cashPurchaseSavings": {
+      "object (CashPurchaseSavings)"
+    },
+    "financedPurchaseSavings": {
+      "object (FinancedPurchaseSavings)"
+    },
+    "panelConfigIndex": "integer"
+  }
