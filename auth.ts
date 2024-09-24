@@ -14,13 +14,13 @@ export const {
   signIn,
   signOut,
   update,
-} = NextAuth({
+} = NextAuth(authConfig, {
   pages: {
     signIn: "/auth/login",
     error: "/auth/error",
   },
   events: {
-    async linkAccount({ user }) {
+    async linkAccount({ user }: { user: any }) {
       await db.user.update({
         where: { id: user.id },
         data: { emailVerified: new Date() },
@@ -28,7 +28,7 @@ export const {
     },
   },
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account }: { user: any; account: any }) {
       //Allow OAuth without email verification
       if (account?.provider !== "credentials") return true;
 
@@ -54,7 +54,7 @@ export const {
       return true;
     },
 
-    async session({ token, session }) {
+    async session({ token, session }: { token: any; session: any }) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
@@ -72,7 +72,7 @@ export const {
 
       return session;
     },
-    async jwt({ token }) {
+    async jwt({ token }: { token: any }) {
       if (!token.sub) return token;
 
       const existingUser = await getUserById(token.sub);
@@ -92,5 +92,4 @@ export const {
   },
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
-  ...authConfig,
 });

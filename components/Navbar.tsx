@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 
 import { styles } from '@/constants';
 import { navVariants } from '@/lib/motion';
-import { LoginButton } from '@/components/auth/login-button';
+import { LoginButton } from './auth/login-button';
+import Image from 'next/image';
 
 
   export const Navbar = () => (
@@ -18,16 +19,18 @@ import { LoginButton } from '@/components/auth/login-button';
     <div
       className={`${styles.innerWidth} mx-auto flex justify-between gap-8`}
     >
-      <img
+      <Image
         src="/logoOff.svg"
         alt="search"
+        width={54}
+        height={44}
         className="w-[54px] h-[44px] ml-[35px] mr-[35px] object-contain flex justify-center items-center"
       />
       <h2 className="font-thin text-[18px] leading-[30.24px] text-white flex justify-center items-center">
         CITIZEN CORRECTS
       </h2>
       <div>
-          <LoginButton asChild>
+          <LoginButton mode="modal" asChild>
             <button
               type="button"
               className="w-[124px] h-[44px] object-contain flex justify-end gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group"
